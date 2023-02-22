@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DmitryJavaTelegrambotApplication {
+public class CurrencyNotifierTelegrambotApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DmitryJavaTelegrambotApplication.class, args);
+		SpringApplication.run(CurrencyNotifierTelegrambotApplication.class, args);
 	}
 
 }

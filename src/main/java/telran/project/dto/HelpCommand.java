@@ -3,27 +3,42 @@ package telran.project.dto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.telegram.telegrambots.meta.api.objects.Update;
+import telran.project.entity.User;
 
 @Getter
+@NoArgsConstructor
 @Component
-public class HelpCommand implements Command {
+public class HelpCommand {
 
-    private final String textToSend = "This bot is used to demonstrate the compatibility of telegrams with Spring Java";
-    private Long chatId;
-    private Update update;
+    User user;
 
-    public String getTextToSend() {
-        return textToSend;
+    static final String HELP_TEXT = """
+            This bot is created to show the currency rates.
+
+            You can execute commands from the main menu on the left or by typing command:
+                        
+            Type /start to see a welcome message;
+                        
+            Type /rate to make a request for currency rates;
+            
+            Type /subscribe to receive currency rate for the subscribed pairs;
+            
+            Type /unsubscribe to stop receiving currency rate for the interested pair;
+                        
+            Type /help to see this message again.
+            """;
+
+    static final String HELP_START_COMMAND_TEXT = "To start chatting with this bot, please use the \"/start\" command.";
+
+    public HelpCommand(User user) {
+        this.user = user;
     }
 
-    public HelpCommand(Update update) {
-        this.update = update;
-        execute(update);
+    public String getHelpText() {
+        return HELP_TEXT;
     }
 
-    @Override
-    public void execute(Update update) {
-        chatId = update.getMessage().getChatId();
+    public String getHelpStartCommandText() {
+        return HELP_START_COMMAND_TEXT;
     }
 }

@@ -3,30 +3,22 @@ package telran.project.dto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.telegram.telegrambots.meta.api.objects.Chat;
-import org.telegram.telegrambots.meta.api.objects.Update;
+import telran.project.entity.User;
 
 @Getter
+@NoArgsConstructor
 @Component
-public class StopCommand implements Command {
+public class StopCommand {
 
-    private Long chatId;
-    private Chat chat;
-    private Update update;
+    User user;
 
-    public StopCommand(Update update) {
-        this.update = update;
-        execute(update);
+    static final String STOP_TEXT_INFO = "You are not registered to the service.";
+
+    public StopCommand(User user) {
+        this.user = user;
     }
 
-    @Override
-    public void execute(Update update) {
-        chatId = update.getMessage().getChatId();
-        chat = update.getMessage().getChat();
+    public String getStopTextInfo() {
+        return STOP_TEXT_INFO;
     }
 }
-
-//    @Override
-//    public Long getChatId() {
-//        return chatId;
-//    }
