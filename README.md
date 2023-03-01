@@ -1,2 +1,2 @@
 # dmitry-java-telegrambot
-Telegram Bot (articles search)
+Telegram Bot (currency notifier)
