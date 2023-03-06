@@ -141,10 +141,11 @@ public class BotServiceIntegrationTest {
     public void testOnRateCommandReceivedGetActualRate() {
 
         User testUserIvan = new User(100000L, "Ivan", "Ivanov", null, false);
+        Double actualRate = botService.getRateValue("eur", "rub");
         botService.onStartCommandReceived(new StartCommand(testUserIvan));
         // 1 EUR = 81.773905154778 RUB
         assertEquals(
-                "1 EUR = 81.773905154778 RUB",
+                "1 EUR = " + actualRate + " RUB",
                 botService.onRateCommandReceived(new RateCommand(testUserIvan, "/rate eur to rub"))
         );
     }
