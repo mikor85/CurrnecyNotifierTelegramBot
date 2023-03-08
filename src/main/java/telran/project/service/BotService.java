@@ -103,7 +103,7 @@ public class BotService {
     }
 
     // Method for forming a URL, getting JSON and returning the value of the exchange rate
-    private Double getRateValue(String fromCurrency, String toCurrency) {
+    public Double getRateValue(String fromCurrency, String toCurrency) {
         String urlAddress = "http://www.floatrates.com/daily/" + fromCurrency + ".json";
         try {
             URL url = new URL(urlAddress);
